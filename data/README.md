@@ -13,4 +13,4 @@
 ## Files in this folder
 - `raw/`: the dataset as downloaded. Never edited, not in git.
 - `all_images.csv`: one row per image (path, class, size, mode, file hashes), made by `notebooks/01_data_check.ipynb`.
-- `splits/`: our train/validation/test lists, made once in notebook 03 and reused by every later notebook.
+- `splits/`: our train/validation/test lists, made once in notebook 02 and reused by every later notebook.

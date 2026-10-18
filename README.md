@@ -19,7 +19,7 @@ We train a convolutional neural network (CNN) that looks at a grayscale image of
 
 ## Where the notebooks run
 
-The notebooks run on **Kaggle**, with the NEU dataset attached and a free GPU for training. Each one also runs on a laptop if the dataset is in `data/raw/NEU-DET/`.
+The notebooks run on **Kaggle**, with the NEU dataset attached and a free GPU for training. Each one also runs on a laptop if the dataset is in `data/raw/NEU-DET/` and the packages in `requirements.txt` are installed (`pip install -r requirements.txt`). Training without a GPU is slow, mainly for MobileNetV2.
 
 To run a notebook on Kaggle from this folder and pull its results back:
 ```
