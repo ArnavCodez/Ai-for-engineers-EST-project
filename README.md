@@ -15,7 +15,7 @@ We train a convolutional neural network (CNN) that looks at a grayscale image of
 | 4 | Models: our own CNNs (`notebooks/04_cnn_from_scratch.ipynb`) and MobileNetV2 transfer learning (`notebooks/05_transfer_learning.ipynb`) | done |
 | 5 | Evaluation on the test set, used once (`notebooks/06_evaluation.ipynb`) | done |
 | 6 | Extras: Grad-CAM, robustness, augmentation ablation, TensorFlow Lite (`notebooks/07_extras.ipynb`) | done |
-| 7 | Flow diagram, report, slides, viva prep | to do |
+| 7 | Flow diagram, report, slides, viva prep | in progress (diagram and report done) |
 
 ## Where the notebooks run
 
@@ -33,7 +33,7 @@ This pushes `notebooks/01_data_check.ipynb` to Kaggle (settings in `kaggle/kerne
 notebooks/   01 data check, 02 split + EDA, 03 pipeline, 04 own CNNs, 05 MobileNetV2, then evaluation and extras
 data/        README (source), all_images.csv, splits/ (raw images are not in git)
 outputs/     figures/ (PNG), results/ (CSV, JSON), models/ (not in git)
-docs/        problem.md, later the flow diagram, report and slides
+docs/        problem.md, flow_diagram.md (+ .png), report/ (report.md and report.pdf)
 kaggle/      run_on_kaggle.py and kernels.json (Kaggle settings per notebook)
 ```
 

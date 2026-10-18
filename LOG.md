@@ -399,3 +399,13 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
   - Training on the GPU is not exactly repeatable; the numbers in the notebooks and `outputs/results/` are the ones to quote. Earlier tries are kept in `outputs/results/first_run/`, `second_run/` and `extras_run1/`.
 
 ---
+
+## 2026-10-18 18:55 | Phase 7.2 | Report and flow diagram update  (run by: Arnav)
+**Tags:** [RESULT] [FIX]
+**What we did:** Wrote the report in `docs/report/report.md` and printed it to `docs/report/report.pdf` (21 pages, A4), the same file as `Report2_XX.pdf` in the submission folder. Redrew `docs/flow_diagram.png` with the final training settings.
+**Why:** The report is a required deliverable. The flow diagram still showed our first plan for MobileNetV2 (top 30 layers, learning rate 1e-5, patience 8), which no longer matched notebooks 04 and 05.
+**How:** Same structure and cover page as our MST report: abstract, introduction, methodology, experiments and results, conclusion, future work, 12 references. Every number was checked against `outputs/results/*.csv`. The Markdown is printed to PDF with headless Chrome. The flow chart is turned sideways on its own page so the text stays readable. Photo-like figures go in as JPEG copies, which keeps the PDF at 2.2 MB.
+**Result:** 11 figures and 8 tables. The diagram now shows stage B from layer 100 at 1e-4 with batch norm frozen, and the epoch limits and patience we actually used. Notebook 05's text about epochs and patience was corrected to match its code (stage A up to 20 epochs with patience 5, stage B up to 40 with patience 8). No code was re-run.
+**Nuances / gotchas:** The Song and Yan paper (reference 7) was never opened; its volume and pages come from papers that cite it, so check them against the PDF if anyone has access.
+**Alternatives considered:** Writing the report in Overleaf like the MST one (the Markdown can be pasted in section by section if the team prefers).
+**Viva angle:** Q: "Why does your flow chart differ from the plan?" A: It did at first; we redrew it after the batch-norm fix changed the fine-tuning recipe, so the chart shows what the notebooks really do.

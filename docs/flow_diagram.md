@@ -23,8 +23,8 @@ flowchart LR
     subgraph S3["3 · MODELLING"]
         direction TB
         G["<b>Own CNNs</b> (nb 04)<br/>M1 baseline: 3 conv blocks 32-64-128,<br/>GAP, dense 128, dropout 0.5<br/>M2: M1 + batch norm + augmentation"]
-        H["<b>Transfer learning</b> (nb 05)<br/>M3 MobileNetV2 (ImageNet)<br/>stage A frozen base, lr 1e-3<br/>stage B top 30 layers unfrozen, lr 1e-5"]
-        I["<b>Training</b><br/>Adam · cross-entropy · up to 50 epochs<br/>EarlyStopping (patience 8) · ReduceLROnPlateau<br/>best checkpoint by validation loss"]
+        H["<b>Transfer learning</b> (nb 05)<br/>M3 MobileNetV2 (ImageNet)<br/>stage A frozen base, lr 1e-3<br/>stage B unfrozen from layer 100, lr 1e-4,<br/>batch norm layers kept frozen"]
+        I["<b>Training</b><br/>Adam · cross-entropy<br/>M1, M2: up to 100 epochs, early stop patience 12<br/>M3: up to 20 + 40 epochs<br/>ReduceLROnPlateau · best checkpoint by validation loss"]
         J["<b>Choose 2 finalists</b><br/>on the validation set only"]
         G --> H --> I --> J
     end
