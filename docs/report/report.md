@@ -52,7 +52,7 @@ predicted class = f(image)
 
 where f is the trained CNN. The data is the public NEU surface defect database, so the work is not based on Tata Steel data.
 
-Predictive maintenance means fixing equipment before it fails, using early warning signs. If a classifier counts defect types over time, a rising count points at a part of the line. More rolled-in scale suggests checking the descaling system, and more scratches suggest checking the rolls and the roll gap [2]. One defect type can have several causes, and wrong root-cause analysis is common [6], so a rising count is a prompt to inspect and not a diagnosis. We have not built a trend dashboard, and NEU has no timestamps to test one. Our model would supply the labels for such a view.
+Predictive maintenance means fixing equipment before it fails, using early warning signs. If a classifier counts defect types over time, a rising count points at a part of the line. More rolled-in scale suggests checking the descaling system, and more scratches suggest checking the rolls and the roll gap [2]. One defect type can have several causes, and wrong root-cause analysis is common [6], so a rising count is a reason to inspect and not a diagnosis. We have not built a trend dashboard, and NEU has no timestamps to test one. Our model would supply the labels for such a view.
 
 ### 1.2 Literature Review and Research Gap
 

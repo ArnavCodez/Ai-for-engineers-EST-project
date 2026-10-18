@@ -80,7 +80,7 @@ The EST rubric was **"shared on email"**. **Paste it here as soon as you have it
 - **N3. Small dataset (300 images per class), so overfitting is the main danger.** Fight it with augmentation, dropout, BatchNorm, early stopping and transfer learning. Show the train vs validation curves to prove it.
 - **N4. Split BEFORE augmenting, and augment the training set only.** Validation and test images are never augmented: they must look like real unseen images. Use a stratified 70/15/15 split with `SEED = 42`, and save it to `data/splits/*.csv`.
 - **N5. Duplicates.** Check for exact duplicate images using file hashes. A duplicate that lands in both train and test inflates accuracy. Log the count, even if it is 0.
-- **N6. Accuracy will probably be very high (around 95–100%).** The teacher may ask "isn't that too good?". Our answers:
+- **N6. Accuracy will probably be very high (around 95-100%).** The teacher may ask "isn't that too good?". Our answers:
   - NEU is clean, balanced and taken in controlled conditions;
   - we checked for duplicates and leakage;
   - our robustness test (I2) shows how accuracy drops with noise or blur;
@@ -151,12 +151,12 @@ EST_Steel_Defect_CNN/
 
 ## Phase 1: Problem understanding
 
-**Task:** write `docs/problem.md` (about 1–1.5 pages):
+**Task:** write `docs/problem.md` (about 1-1.5 pages):
 - **Context:**
-  - how hot-rolled steel strip is made, in 3–4 lines;
+  - how hot-rolled steel strip is made, in 3-4 lines;
   - why surface defects matter (customer rejection, cracks growing under load, scrap cost);
   - why manual inspection is weak (slow, tiring, inconsistent between inspectors, very fast-moving strip).
-- **The six defect types:** what each looks like and a likely cause. Verify the causes from 1–2 sources and cite them in `LOG.md`.
+- **The six defect types:** what each looks like and a likely cause. Verify the causes from 1-2 sources and cite them in `LOG.md`.
 - **Link to "predictive maintenance":** trends in defect types point to equipment problems before quality collapses. For example:
   - more rolled-in scale → check the descaling system;
   - more scratches → check the rolls and guides.
@@ -192,7 +192,7 @@ EST_Steel_Defect_CNN/
 6. Optional: PCA or t-SNE of the raw pixels, coloured by class. It shows the classes overlap in raw pixel space, which is *why* we need a CNN to learn features.
 
 **Acceptance criteria**
-- [ ] At least 5 figures are saved, each with 1–2 observation bullets in `LOG.md`.
+- [ ] At least 5 figures are saved, each with 1-2 observation bullets in `LOG.md`.
 - [ ] A "Top 5 EDA insights" list is written.
 - [ ] Concepts added: pixel intensity histogram, mean image, PCA/t-SNE (if used).
 
@@ -337,11 +337,11 @@ Do **at least 3** of these (I1 and I2 are strongly recommended). Log each with n
 ## Phase 7: Deliverables & viva prep
 
 1. **Flow diagram (required):** `docs/flow_diagram.md` in Mermaid, plus an exported PNG.
-   - It must show: dataset → data check (counts, duplicates) → EDA (list the plots) → split → resize/normalise → augmentation (train only) → models M1–M3 → training with callbacks → choose finalists on validation → test evaluation → Grad-CAM / robustness / demo.
+   - It must show: dataset → data check (counts, duplicates) → EDA (list the plots) → split → resize/normalise → augmentation (train only) → models M1-M3 → training with callbacks → choose finalists on validation → test evaluation → Grad-CAM / robustness / demo.
    - Export with `npx -y @mermaid-js/mermaid-cli -i docs/flow_diagram.md -o docs/flow_diagram.png`, or draw it in draw.io.
 2. **Final submission notebook (if the teacher wants one file):** `notebooks/EST_final.ipynb`. It must run top to bottom (it also works on Colab).
 3. **Report (if asked):** in the rubric order.
-4. **Slides (10–12):**
+4. **Slides (10-12):**
    1. Title + team
    2. Problem (Tata Steel inspection)
    3. Dataset & the 6 defects
@@ -372,11 +372,11 @@ Do **at least 3** of these (I1 and I2 are strongly recommended). Log each with n
 
 | Member | Owns | Presents |
 |---|---|---|
-| A: ____ | Phases 0–1, `docs/problem.md` | Problem & dataset |
-| B: ____ | Phases 2–3 EDA, split, augmentation | EDA & pre-processing |
+| A: ____ | Phases 0-1, `docs/problem.md` | Problem & dataset |
+| B: ____ | Phases 2-3 EDA, split, augmentation | EDA & pre-processing |
 | C: ____ | Phase 4 M1/M2 (scratch CNNs) | CNN architecture |
 | D: ____ | Phase 4 M3 + Phase 5 evaluation | Transfer learning & results |
-| E: ____ | Phases 6–7 Grad-CAM, robustness, demo, slides | Innovation & demo |
+| E: ____ | Phases 6-7 Grad-CAM, robustness, demo, slides | Innovation & demo |
 
 ## Deadlines (fill in)
 - EST project submission / presentation: ____

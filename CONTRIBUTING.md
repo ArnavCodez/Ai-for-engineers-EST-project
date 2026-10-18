@@ -100,16 +100,16 @@ Small related steps can share one entry, but nothing important may be skipped.
 ```
 ## YYYY-MM-DD HH:MM | Phase N.x | <short title>  (run by: <name>)
 **Tags:** [SETUP] [DATA] [EDA] [DECISION] [NUANCE] [BUG] [RESULT] [IDEA]   <- keep only the ones that apply
-**What we did:** 1–3 lines.
+**What we did:** 1-3 lines.
 **Why:** the reason, in plain English.
 **How:** files/notebooks/functions touched, key parameters (e.g. `RandomForestRegressor(n_estimators=300, max_depth=12)`), commands run.
 **Result:** actual numbers / shapes / timings, and figure paths, each figure with one line saying what it shows.
 **Nuances / gotchas:** anything subtle: traps, surprises, warnings, things that look wrong but aren't, things that almost went wrong.
 **Alternatives considered:** what else we could have done, and why we didn't.
-**Viva angle:** the question this step invites + a 1–2 line answer (also copy it into VIVA_QA.md).
+**Viva angle:** the question this step invites + a 1-2 line answer (also copy it into VIVA_QA.md).
 ```
 
-Write "—" in a field that doesn't apply. Never drop a field.
+Write "n/a" in a field that doesn't apply. Never drop a field.
 
 ### 4.4 Tags (so teammates can Ctrl+F)
 
@@ -130,7 +130,7 @@ Write "—" in a field that doesn't apply. Never drop a field.
 Add an entry titled **"Phase N summary"** containing:
 1. a 5-bullet recap in simple words;
 2. the phase's acceptance checklist with ticks;
-3. **"What every teammate must be able to explain from this phase"** (3–5 points);
+3. **"What every teammate must be able to explain from this phase"** (3-5 points);
 4. the key numbers from this phase in a small table.
 
 ### 4.6 End of every session: a handover entry
@@ -146,7 +146,7 @@ Add a short entry titled **"Handover"** with:
 ```
 ### <Concept name>
 - **In one line:** ...
-- **Explained simply:** 3–6 lines, no jargon, an analogy if it helps.
+- **Explained simply:** 3-6 lines, no jargon, an analogy if it helps.
 - **Formula (if any):** ...
 - **Why we used it here:** ...
 - **Where in our code:** notebook + cell, or src function.
@@ -159,7 +159,7 @@ Add a concept the **first time** it is used, e.g. GroupKFold, EWMA, RMSE, R², d
 
 ```
 **Q:** <question as a teacher would ask it>
-**A:** <1–3 line answer in simple words, with our actual numbers where relevant>
+**A:** <1-3 line answer in simple words, with our actual numbers where relevant>
 ```
 
 ### 4.9 Writing style for all logs

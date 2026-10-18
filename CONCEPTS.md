@@ -4,7 +4,6 @@ Every concept we use, explained simply. The format is in `CONTRIBUTING.md` secti
 Add a concept the first time it is used. Improve an entry when our understanding improves.
 
 ## Domain (steel & inspection)
-<!-- hot rolling, the 6 NEU defect types, rolled-in scale, crazing, line-scan camera, automated visual inspection -->
 
 ### Hot rolling
 - **In one line:** Squeezing a heated steel slab between rolls to make thin strip.
@@ -47,7 +46,6 @@ Add a concept the first time it is used. Improve an entry when our understanding
 - **Common confusion / trap:** Classification (what defect is in this image) is not detection (where in the image). We do classification, and use Grad-CAM later to see where the model looked.
 
 ## Images & pre-processing
-<!-- image as pixel matrix, grayscale vs RGB, resolution, normalisation, stratified split, data augmentation, batch, tf.data -->
 
 ### Digital image as a matrix of pixels
 - **In one line:** A grayscale image is a grid of numbers, one number per pixel.
@@ -162,7 +160,6 @@ Add a concept the first time it is used. Improve an entry when our understanding
 - **Common confusion / trap:** Never put random augmentation before `cache`, or the random changes are frozen after the first epoch. Shuffle only the training data.
 
 ## CNN building blocks
-<!-- convolution (kernel/stride/padding/feature map), ReLU, pooling, global average pooling, dense, softmax, cross-entropy, Adam, learning rate, epoch -->
 
 ### Convolution (kernel, stride, padding, feature map)
 - **In one line:** A small filter that slides over the image and marks where its pattern appears.
@@ -230,7 +227,6 @@ Add a concept the first time it is used. Improve an entry when our understanding
 
 
 ## Training & regularisation
-<!-- overfitting, dropout, BatchNorm, early stopping, ReduceLROnPlateau, transfer learning, fine-tuning, MobileNetV2 -->
 
 ### Epoch, batch and step
 - **In one line:** An epoch is one pass over all training images, a batch is a group of images, a step is one weight update.
@@ -316,7 +312,6 @@ Add a concept the first time it is used. Improve an entry when our understanding
 
 
 ## Evaluation & explainability
-<!-- accuracy, precision, recall, F1, macro average, confusion matrix, Grad-CAM, robustness, inference latency, TFLite -->
 
 ### Accuracy
 - **In one line:** The share of images the model labels correctly.

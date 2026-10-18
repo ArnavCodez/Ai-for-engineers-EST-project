@@ -5,7 +5,7 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 
 ---
 
-## 2026-10-06 | Phase — | Project chosen and plan written  (run by: Arnav)
+## 2026-10-06 | Planning | Project chosen and plan written  (run by: Arnav)
 **Tags:** [DECISION]
 **What we did:** Chose EST statement #3 (Tata Steel, CNN for surface cracks/defects in steel) and wrote `PLAN.md`.
 **Why:** The team decided on #3.
@@ -84,7 +84,7 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 - **Bug 2, no GPU.** Symptom: TensorFlow logged `failed call to cuInit: UNKNOWN ERROR (303)` and listed no GPU; in the next run `nvidia-smi` did not exist on the machine. The kernel settings did ask for a GPU (`machine_shape: NvidiaTeslaT4`). Likely cause: Kaggle only gives GPUs (and internet inside notebooks) to phone-verified accounts. Fix: pending, Arnav to check phone verification. Until then notebooks 01 to 03 run on CPU, which they do not need anything more for.
 **Nuances / gotchas:** Kaggle did not report an error for the missing GPU; it silently ran on CPU. So notebook 04 prints the GPU list at the start, to make this visible.
 **Alternatives considered:** Training on the laptop CPU (possible, slower); Google Colab.
-**Viva angle:** —
+**Viva angle:** n/a
 
 ---
 
@@ -219,7 +219,7 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 - **Bug:** pushing notebook 02 failed with `400 Bad Request` on `SaveKernel`. Cause: the repo copy now holds its executed outputs (six embedded figures), so the upload was too big. Fix: `run_on_kaggle.py` strips all outputs before uploading; Kaggle recomputes them anyway.
 - The first run on the new account started before the phone verification went through and still had no GPU.
 **Alternatives considered:** Training the scratch CNNs on CPU under the first account (about 20 to 30 minutes per model; MobileNetV2 would still need internet).
-**Viva angle:** —
+**Viva angle:** n/a
 
 ---
 

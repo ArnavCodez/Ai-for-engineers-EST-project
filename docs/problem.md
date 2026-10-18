@@ -34,7 +34,7 @@ Predictive maintenance means fixing equipment before it fails, using early warni
 - more pits: check roll surface condition [9];
 - more inclusions: the cause is upstream, in steelmaking and casting, so the fix is not in the rolling mill [8].
 
-One defect type can have several causes, and wrong root-cause analysis is common [11]. So a trend is a prompt to inspect, not a diagnosis. A mill example exists where inspection images and data are archived so engineers can adjust the furnace process [12]. Our classifier would supply the defect labels for such a trend view. We have not built the trend dashboard, and NEU has no timestamps to test it.
+One defect type can have several causes, and wrong root-cause analysis is common [11]. So a trend is a reason to inspect, not a diagnosis. A mill example exists where inspection images and data are archived so engineers can adjust the furnace process [12]. Our classifier would supply the defect labels for such a trend view. We have not built the trend dashboard, and NEU has no timestamps to test it.
 
 ## 4. Our objective
 
