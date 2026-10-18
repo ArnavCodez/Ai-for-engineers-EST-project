@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# data and trained models stay out of git (see data/README.md)
+data/raw/
+outputs/models/
+
+# temporary folders made by kaggle/run_on_kaggle.py
+kaggle/_build/

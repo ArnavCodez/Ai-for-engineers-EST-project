@@ -1,0 +1,4 @@
+augmentation,val_accuracy,val_loss,train_accuracy_at_best,epochs,train_time_s
+none,1.0,0.0147,0.9857,91,190.7
+no rotation,0.9926,0.0558,0.9603,45,169.3
+full,0.9556,0.1677,0.954,38,140.9

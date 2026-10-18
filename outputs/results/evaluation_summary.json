@@ -1,0 +1,55 @@
+{
+  "test_opened_at": "2026-10-18 04:38:53 UTC",
+  "test_images": 270,
+  "finalists": [
+    "m3_mobilenetv2",
+    "m1_baseline"
+  ],
+  "metrics": [
+    {
+      "model": "m1_baseline",
+      "finalist": true,
+      "accuracy": 0.9407,
+      "macro_precision": 0.9462,
+      "macro_recall": 0.9407,
+      "macro_f1": 0.94,
+      "crack_precision": 0.9783,
+      "crack_recall": 1.0,
+      "crack_f1": 0.989,
+      "errors": 16,
+      "cpu_ms_per_image": 21.57,
+      "params": 109958,
+      "model_size_mb": 1.38
+    },
+    {
+      "model": "m2_improved",
+      "finalist": false,
+      "accuracy": 0.9667,
+      "macro_precision": 0.9668,
+      "macro_recall": 0.9667,
+      "macro_f1": 0.9665,
+      "crack_precision": 0.9375,
+      "crack_recall": 1.0,
+      "crack_f1": 0.9677,
+      "errors": 9,
+      "cpu_ms_per_image": 29.31,
+      "params": 110630,
+      "model_size_mb": 1.41
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "finalist": true,
+      "accuracy": 0.9852,
+      "macro_precision": 0.986,
+      "macro_recall": 0.9852,
+      "macro_f1": 0.9852,
+      "crack_precision": 1.0,
+      "crack_recall": 1.0,
+      "crack_f1": 1.0,
+      "errors": 4,
+      "cpu_ms_per_image": 223.96,
+      "params": 2265670,
+      "model_size_mb": 24.46
+    }
+  ]
+}

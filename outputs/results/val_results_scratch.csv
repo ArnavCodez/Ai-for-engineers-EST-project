@@ -1,0 +1,3 @@
+model,params,epochs_trained,best_epoch,val_accuracy,val_loss,train_accuracy_at_best,train_time_s,model_size_mb,note
+m1_baseline,109958,100,100,0.9704,0.1056,0.9413,182.1,1.38,"3 conv blocks, no augmentation"
+m2_improved,110630,41,29,0.9593,0.131,0.9563,158.6,1.41,M1 + batch norm + augmentation

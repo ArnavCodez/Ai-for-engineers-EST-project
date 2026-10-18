@@ -1,0 +1,36 @@
+{
+  "train_images": 1260,
+  "image_shape": [
+    200,
+    200
+  ],
+  "brightness_median_by_class": {
+    "crazing": 148.67,
+    "inclusion": 99.74,
+    "patches": 139.12,
+    "pitted_surface": 186.05,
+    "rolled-in_scale": 126.53,
+    "scratches": 90.36
+  },
+  "contrast_median_by_class": {
+    "crazing": 28.55,
+    "inclusion": 11.18,
+    "patches": 57.75,
+    "pitted_surface": 25.92,
+    "rolled-in_scale": 15.89,
+    "scratches": 20.35
+  },
+  "pca_variance_ratio_pc1_pc2": [
+    0.7063,
+    0.0828
+  ],
+  "pc1_brightness_correlation": 1.0,
+  "figures": [
+    "eda_01_class_balance.png",
+    "eda_02_sample_grid.png",
+    "eda_03_mean_image_per_class.png",
+    "eda_04_intensity_histograms.png",
+    "eda_05_brightness_contrast_boxplots.png",
+    "eda_06_pca_raw_pixels.png"
+  ]
+}

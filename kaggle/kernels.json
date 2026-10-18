@@ -1,0 +1,89 @@
+{
+  "01_data_check": {
+    "slug": "neu-steel-01-data-check-run",
+    "title": "NEU Steel 01 Data Check run",
+    "gpu": true,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ]
+  },
+  "02_split_and_eda": {
+    "slug": "neu-steel-02-split-and-eda-run",
+    "title": "NEU Steel 02 Split and EDA run",
+    "gpu": false,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-01-data-check-run"
+    ]
+  },
+  "03_pipeline_and_augmentation": {
+    "slug": "neu-steel-03-pipeline-and-augmentation-run",
+    "title": "NEU Steel 03 Pipeline and Augmentation run",
+    "gpu": false,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-02-split-and-eda-run"
+    ]
+  },
+  "04_cnn_from_scratch": {
+    "slug": "neu-steel-04-cnn-from-scratch-run",
+    "title": "NEU Steel 04 CNN from scratch run",
+    "gpu": true,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-02-split-and-eda-run"
+    ]
+  },
+  "05_transfer_learning": {
+    "slug": "neu-steel-05-transfer-learning-run",
+    "title": "NEU Steel 05 Transfer learning run",
+    "gpu": true,
+    "internet": true,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-02-split-and-eda-run",
+      "neu-steel-04-cnn-from-scratch-run"
+    ]
+  },
+  "06_evaluation": {
+    "slug": "neu-steel-06-evaluation-run",
+    "title": "NEU Steel 06 Evaluation run",
+    "gpu": true,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-02-split-and-eda-run",
+      "neu-steel-04-cnn-from-scratch-run",
+      "neu-steel-05-transfer-learning-run"
+    ]
+  },
+  "07_extras": {
+    "slug": "neu-steel-07-extras-run",
+    "title": "NEU Steel 07 Extras run",
+    "gpu": true,
+    "internet": false,
+    "datasets": [
+      "kaustubhdikshit/neu-surface-defect-database"
+    ],
+    "kernels": [
+      "neu-steel-02-split-and-eda-run",
+      "neu-steel-04-cnn-from-scratch-run",
+      "neu-steel-05-transfer-learning-run",
+      "neu-steel-06-evaluation-run"
+    ]
+  }
+}

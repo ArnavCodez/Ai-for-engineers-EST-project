@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "fractions": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "images": {
+    "train": 1260,
+    "val": 270,
+    "test": 270
+  },
+  "per_class": {
+    "crazing": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "inclusion": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "patches": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "pitted_surface": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "rolled-in_scale": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "scratches": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    }
+  },
+  "pictures_in_two_parts": 0
+}

@@ -1,0 +1,3 @@
+model,keras_size_mb,tflite_size_mb,keras_val_accuracy,tflite_val_accuracy,same_prediction_share,tflite_cpu_ms_per_image
+m3_mobilenetv2,24.46,2.51,0.9704,0.9741,0.9963,18.03
+m1_baseline,1.38,0.12,0.9704,0.9704,1.0,10.14

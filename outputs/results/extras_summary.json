@@ -1,0 +1,390 @@
+{
+  "finalists": [
+    "m3_mobilenetv2",
+    "m1_baseline"
+  ],
+  "robustness": [
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "noise",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "noise",
+      "severity": 1,
+      "level": 0.02,
+      "accuracy": 0.963
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "noise",
+      "severity": 2,
+      "level": 0.05,
+      "accuracy": 0.8259
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "noise",
+      "severity": 3,
+      "level": 0.1,
+      "accuracy": 0.4815
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "blur",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "blur",
+      "severity": 1,
+      "level": 3.0,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "blur",
+      "severity": 2,
+      "level": 5.0,
+      "accuracy": 0.9259
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "blur",
+      "severity": 3,
+      "level": 9.0,
+      "accuracy": 0.8481
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "darker",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "darker",
+      "severity": 1,
+      "level": 0.15,
+      "accuracy": 0.9667
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "darker",
+      "severity": 2,
+      "level": 0.3,
+      "accuracy": 0.9667
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "darker",
+      "severity": 3,
+      "level": 0.45,
+      "accuracy": 0.9185
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "low_contrast",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "low_contrast",
+      "severity": 1,
+      "level": 0.8,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "low_contrast",
+      "severity": 2,
+      "level": 0.6,
+      "accuracy": 0.8704
+    },
+    {
+      "model": "m3_mobilenetv2",
+      "corruption": "low_contrast",
+      "severity": 3,
+      "level": 0.4,
+      "accuracy": 0.6519
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "noise",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "noise",
+      "severity": 1,
+      "level": 0.02,
+      "accuracy": 0.5815
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "noise",
+      "severity": 2,
+      "level": 0.05,
+      "accuracy": 0.2926
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "noise",
+      "severity": 3,
+      "level": 0.1,
+      "accuracy": 0.2444
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "blur",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "blur",
+      "severity": 1,
+      "level": 3.0,
+      "accuracy": 0.3852
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "blur",
+      "severity": 2,
+      "level": 5.0,
+      "accuracy": 0.3259
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "blur",
+      "severity": 3,
+      "level": 9.0,
+      "accuracy": 0.2556
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "darker",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "darker",
+      "severity": 1,
+      "level": 0.15,
+      "accuracy": 0.6593
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "darker",
+      "severity": 2,
+      "level": 0.3,
+      "accuracy": 0.3185
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "darker",
+      "severity": 3,
+      "level": 0.45,
+      "accuracy": 0.2556
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "low_contrast",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9704
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "low_contrast",
+      "severity": 1,
+      "level": 0.8,
+      "accuracy": 0.8
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "low_contrast",
+      "severity": 2,
+      "level": 0.6,
+      "accuracy": 0.3815
+    },
+    {
+      "model": "m1_baseline",
+      "corruption": "low_contrast",
+      "severity": 3,
+      "level": 0.4,
+      "accuracy": 0.2481
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "noise",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "noise",
+      "severity": 1,
+      "level": 0.02,
+      "accuracy": 0.463
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "noise",
+      "severity": 2,
+      "level": 0.05,
+      "accuracy": 0.3111
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "noise",
+      "severity": 3,
+      "level": 0.1,
+      "accuracy": 0.2519
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "blur",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "blur",
+      "severity": 1,
+      "level": 3.0,
+      "accuracy": 0.7222
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "blur",
+      "severity": 2,
+      "level": 5.0,
+      "accuracy": 0.4741
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "blur",
+      "severity": 3,
+      "level": 9.0,
+      "accuracy": 0.3852
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "darker",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "darker",
+      "severity": 1,
+      "level": 0.15,
+      "accuracy": 0.8963
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "darker",
+      "severity": 2,
+      "level": 0.3,
+      "accuracy": 0.5259
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "darker",
+      "severity": 3,
+      "level": 0.45,
+      "accuracy": 0.4259
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "low_contrast",
+      "severity": 0,
+      "level": 0.0,
+      "accuracy": 0.9593
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "low_contrast",
+      "severity": 1,
+      "level": 0.8,
+      "accuracy": 0.9778
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "low_contrast",
+      "severity": 2,
+      "level": 0.6,
+      "accuracy": 0.9407
+    },
+    {
+      "model": "m2_improved",
+      "corruption": "low_contrast",
+      "severity": 3,
+      "level": 0.4,
+      "accuracy": 0.5259
+    }
+  ],
+  "ablation": [
+    {
+      "augmentation": "none",
+      "val_accuracy": 1.0,
+      "val_loss": 0.0147,
+      "train_accuracy_at_best": 0.9857,
+      "epochs": 91,
+      "train_time_s": 190.7
+    },
+    {
+      "augmentation": "no rotation",
+      "val_accuracy": 0.9926,
+      "val_loss": 0.0558,
+      "train_accuracy_at_best": 0.9603,
+      "epochs": 45,
+      "train_time_s": 169.3
+    },
+    {
+      "augmentation": "full",
+      "val_accuracy": 0.9556,
+      "val_loss": 0.1677,
+      "train_accuracy_at_best": 0.954,
+      "epochs": 38,
+      "train_time_s": 140.9
+    }
+  ],
+  "tflite": [
+    {
+      "model": "m3_mobilenetv2",
+      "keras_size_mb": 24.46,
+      "tflite_size_mb": 2.51,
+      "keras_val_accuracy": 0.9704,
+      "tflite_val_accuracy": 0.9741,
+      "same_prediction_share": 0.9963,
+      "tflite_cpu_ms_per_image": 18.03
+    },
+    {
+      "model": "m1_baseline",
+      "keras_size_mb": 1.38,
+      "tflite_size_mb": 0.12,
+      "keras_val_accuracy": 0.9704,
+      "tflite_val_accuracy": 0.9704,
+      "same_prediction_share": 1.0,
+      "tflite_cpu_ms_per_image": 10.14
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+model,finalist,accuracy,macro_precision,macro_recall,macro_f1,crack_precision,crack_recall,crack_f1,errors,cpu_ms_per_image,params,model_size_mb
+m1_baseline,True,0.9407,0.9462,0.9407,0.94,0.9783,1.0,0.989,16,21.57,109958,1.38
+m2_improved,False,0.9667,0.9668,0.9667,0.9665,0.9375,1.0,0.9677,9,29.31,110630,1.41
+m3_mobilenetv2,True,0.9852,0.986,0.9852,0.9852,1.0,1.0,1.0,4,223.96,2265670,24.46

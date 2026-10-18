@@ -1,0 +1,4 @@
+model,params,epochs_trained,best_epoch,val_accuracy,val_loss,train_accuracy_at_best,train_time_s,model_size_mb,note
+m1_baseline,109958,50,47,0.963,0.1041,0.927,98.7,1.38,"3 conv blocks, no augmentation"
+m2_improved,110630,9,1,0.1667,1.8581,0.4952,41.0,1.41,M1 + batch norm + augmentation
+m3_mobilenetv2,2265670,45,45,0.8889,0.4446,0.9135,181.0,21.96,stage A 15 epochs + stage B 30 epochs
