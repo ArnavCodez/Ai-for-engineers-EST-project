@@ -20,7 +20,7 @@ Abhilasha Das (1025150396)
 
 Dr. Jyoti Maggu
 
-Code and notebooks: https://github.com/ArnavCodez/Ai-for-engineers-EST-project
+Code, data and demo app: https://github.com/ArnavCodez/Ai-for-engineers-EST-project
 
 </div>
 
@@ -363,6 +363,12 @@ Crack recall was 100% for all three models on the 45 crazing test images, and M3
 
 NEU is clean, balanced, lab-style data, which explains much of the high accuracy. Its images are small 200 x 200 patches, and we did not build the tiling step that long images from a line camera would need. We used one dataset and one split, trained each model once (so there is no spread across seeds) and timed the models on Kaggle's CPU instead of an edge device. Noise at a standard deviation of 0.10 breaks every model, and the trend view over time was never built. A real plant would need its own labelled images.
 
+### 3.8 Code, data and demo app
+
+Everything in this report can be checked in our repository, <https://github.com/ArnavCodez/Ai-for-engineers-EST-project>: the seven notebooks with their saved outputs, the result files behind every number and the trained models (in the submission zip `Code2_29.zip`, together with the NEU images).
+
+The repository also has a Streamlit demo, `app.py`. Double-clicking `run_demo.bat` sets up the Python environment on the first run and opens the demo at http://localhost:8502. Its first tab classifies a test image or an uploaded one with M1 and M3 side by side, and sliders change the image's brightness, contrast, noise, blur and rotation, so the robustness results of Section 3.4 can be tried live. Its second tab shows the test metrics, confusion matrices, training curves, robustness and ablation results from the result files.
+
 ## 4. Conclusion
 
 We built and evaluated a CNN-based recogniser for six steel surface defects, with crazing as the crack class, using the public NEU database in a Tata Steel scenario. Three CNNs were compared: a small CNN of our own (M1), the same CNN with batch normalisation and augmentation (M2) and a fine-tuned MobileNetV2 (M3).
@@ -382,7 +388,7 @@ Along the way we found and fixed two batch-normalisation bugs that would have ma
 5. Collect more crack images for testing, since 45 crazing test images are too few to show that crack recall is reliably high.
 6. Measure the TensorFlow Lite models on a small board next to the line and try full integer quantisation.
 7. Count defect types over time and check whether a rising count points to the right equipment. This needs timestamped data, which NEU does not have.
-8. Build a simple demo app that takes an image and shows the predicted class with a Grad-CAM overlay.
+8. Add a Grad-CAM overlay to the demo app, so it shows where the model looks as well as what it predicts.
 
 ## References
 
@@ -408,4 +414,4 @@ Along the way we found and fixed two batch-normalisation bugs that would have ma
 
 [11] R. R. Selvaraju, M. Cogswell, A. Das, R. Vedantam, D. Parikh and D. Batra, "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization," in Proc. IEEE International Conference on Computer Vision (ICCV), 2017.
 
-[12] AI for Engineers EST Project, project repository (notebooks, results, report). Available at: https://github.com/ArnavCodez/Ai-for-engineers-EST-project
+[12] AI for Engineers EST Project, project repository (notebooks, results, report). Available at: <https://github.com/ArnavCodez/Ai-for-engineers-EST-project>

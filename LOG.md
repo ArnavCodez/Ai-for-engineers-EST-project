@@ -421,3 +421,12 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 **Nuances / gotchas:** Loading TensorFlow takes a few seconds the first time the Classify tab runs.
 **Alternatives considered:** Running the TFLite models in the app (smaller, but the Keras files are what notebook 06 scored).
 **Viva angle:** Q: "Show what happens if the image gets darker." A: Move the brightness slider; M1 breaks sooner than M3, as in the robustness study.
+
+---
+
+## 2026-10-19 22:40 | Phase 7.2 | Report: code and demo section  (run by: Arnav)
+**Tags:** [FIX]
+**What we did:** Added Section 3.8 "Code, data and demo app" to `docs/report/report.md` (repository link, what is in it, how to start the demo) and changed future-work item 8, which still asked for a demo app, to a Grad-CAM overlay in the existing demo. The cover line now reads "Code, data and demo app" and the repository links are clickable. Re-rendered `report.pdf` and rebuilt `Code2_29.zip`.
+**Why:** The report should point to the repository and the demo, and it should not list as future work something we have already built.
+**Result:** Still 21 pages, 2.24 MB.
+**Viva angle:** —
