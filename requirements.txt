@@ -7,3 +7,4 @@ matplotlib==3.10.0
 scikit-learn==1.6.1
 pillow==12.3.0
 notebook
+streamlit==1.65.0

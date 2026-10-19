@@ -409,3 +409,15 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 **Nuances / gotchas:** The Song and Yan paper (reference 7) was never opened; its volume and pages come from papers that cite it, so check them against the PDF if anyone has access.
 **Alternatives considered:** Writing the report in Overleaf like the MST one (the Markdown can be pasted in section by section if the team prefers).
 **Viva angle:** Q: "Why does your flow chart differ from the plan?" A: It did at first; we redrew it after the batch-norm fix changed the fine-tuning recipe, so the chart shows what the notebooks really do.
+
+---
+
+## 2026-10-19 21:00 | Phase 7.4 | Demo app  (run by: Arnav)
+**Tags:** [RESULT]
+**What we did:** Added `app.py`, a Streamlit demo with two tabs ("Classify an image" and "Model performance"), and `run_demo.bat`, which makes the venv on the first run and starts it on port 8502. Added `streamlit` to `requirements.txt`. Rebuilt `Code2_29.zip` with all three.
+**Why:** For the viva we want to classify an image live, change it with sliders, and show the accuracy charts without opening the notebooks.
+**How:** Images are prepared the same way as in notebook 06: greyscale, resized to 200 (M1, scaled to 0-1) or 224 (M3, repeated to 3 channels and passed through MobileNetV2's `preprocess_input`). The sliders change brightness, contrast, noise, blur and rotation before the models see the image. The performance tab only reads `outputs/results/`; the confusion matrix and per-class scores are counted from `test_predictions.csv`.
+**Result:** On 30 random test images the app's preprocessing gave 29/30 correct for M1 and 30/30 for M3, in line with the test results.
+**Nuances / gotchas:** Loading TensorFlow takes a few seconds the first time the Classify tab runs.
+**Alternatives considered:** Running the TFLite models in the app (smaller, but the Keras files are what notebook 06 scored).
+**Viva angle:** Q: "Show what happens if the image gets darker." A: Move the brightness slider; M1 breaks sooner than M3, as in the robustness study.

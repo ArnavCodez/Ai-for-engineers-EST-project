@@ -35,7 +35,19 @@ data/        README (source), all_images.csv, splits/ (raw images are not in git
 outputs/     figures/ (PNG), results/ (CSV, JSON), models/ (not in git)
 docs/        problem.md, flow_diagram.md (+ .png), report/ (report.md and report.pdf)
 kaggle/      run_on_kaggle.py and kernels.json (Kaggle settings per notebook)
+app.py       Streamlit demo (run_demo.bat starts it)
 ```
+
+## The demo
+
+```
+streamlit run app.py
+```
+Or double-click `run_demo.bat`: it makes the virtual environment on the first run, then opens the demo at http://localhost:8502. It needs the trained models in `outputs/models/` and the images in `data/raw/NEU-DET/` (both are in the submission zip, not in git).
+
+Two tabs:
+- **Classify an image:** pick a test image or upload one, change its brightness, contrast, noise, blur or rotation with sliders, and see the class and confidence from M1 and M3 side by side.
+- **Model performance:** test metrics for all three models, size and speed (Keras and TFLite), confusion matrix and per-class scores, training curves, robustness, the augmentation ablation and the misclassified test images, all read from `outputs/results/`.
 
 ## How to learn this project
 
