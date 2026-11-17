@@ -34,6 +34,7 @@ Every teammate follows these rules in every work session. `LOG.md`, `CONCEPTS.md
    - Raw data goes in `data/raw/` and is never modified. For EST the notebooks read it from Kaggle (see `data/README.md`).
    - Processed data goes in `data/processed/`.
    - Never commit data, model files or `.venv/` to git. Each project has a `.gitignore` for this; don't weaken it.
+   - The one exception is `demo/index.html`. It carries M1, M3 and the 270 test images inside one file so the demo works from a fresh clone. Rebuild it with `python demo/build_demo.py` and never edit it by hand.
 8. **Keep it simple.** This is a student project: plain functions, no classes unless really needed, only the libraries listed in `PLAN.md`. Before adding anything not in the plan, ask the team, and log the decision as `[DECISION]`.
 9. **Errors are learning material.** When something fails (install error, crash, wrong-looking result), fix it, then log the symptom, cause and fix as `[BUG]`.
 10. **Tick progress.** When a phase meets all its acceptance criteria, tick it (`[x]`) in the checklist at the top of `PLAN.md`, and tick your tasks in the team tracker.

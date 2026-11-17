@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steel defect inspector</title>
+<meta name="description" content="A CNN that recognises six surface defects on hot-rolled steel, running in the browser. UCS321 EST mini project, group 29, TIET.">
+<style>/*CSS*/</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div>
+      <h1>Steel defect inspector</h1>
+      <p class="masthead-sub">A convolutional neural network that names six surface defects on hot-rolled steel. UCS321 EST mini project, group 29, TIET Patiala.</p>
+    </div>
+    <div class="masthead-meta">
+      <p id="status" role="status">Loading the two models&hellip;</p>
+      <a href="https://github.com/ArnavCodez/Ai-for-engineers-EST-project">Code and report on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap workspace" aria-label="Try the model">
+    <div class="panel picker">
+      <h2>Pick a steel image</h2>
+      <p class="note">These are the 270 test images. No model saw them during training or tuning.</p>
+      <div class="class-list" id="class-list" role="tablist" aria-label="Defect class"></div>
+      <p class="class-desc" id="class-desc"></p>
+      <div class="thumbs" id="thumbs" aria-label="Test images of this class"></div>
+      <div class="picker-actions">
+        <button type="button" id="random-btn">Random test image</button>
+        <label class="file-btn">Upload your own<input type="file" id="upload" accept="image/*"></label>
+      </div>
+    </div>
+
+    <div class="panel viewer">
+      <div class="viewer-head">
+        <h2 id="image-title">Test image</h2>
+        <p id="truth" class="truth"></p>
+      </div>
+      <div class="stage">
+        <canvas id="view" width="400" height="400" aria-label="The steel image the models see"></canvas>
+        <canvas id="view-heat" width="400" height="400" aria-hidden="true"></canvas>
+      </div>
+      <div class="heat-row">
+        <label class="check"><input type="checkbox" id="heat-on"> Show where the model looked</label>
+        <div class="seg" role="radiogroup" aria-label="Heat map model">
+          <button type="button" data-heat="m3" aria-pressed="true">M3</button>
+          <button type="button" data-heat="m1" aria-pressed="false">M1</button>
+        </div>
+      </div>
+      <details class="stress" id="stress" open>
+        <summary>Stress test: change the image</summary>
+        <p class="note">The same changes we used to test robustness. Watch how each model reacts.</p>
+        <div class="sliders" id="sliders"></div>
+        <button type="button" id="reset-btn" class="quiet">Reset the image</button>
+      </details>
+    </div>
+
+    <div class="panel verdict">
+      <h2>What the models say</h2>
+      <div class="card card-final" id="card-m3"></div>
+      <div class="card" id="card-m1"></div>
+      <p class="note">M3 is our final model: MobileNetV2 pretrained on 1.2 million ImageNet photos, then fine-tuned on steel. M1 is the small CNN we built and trained from scratch.</p>
+    </div>
+  </section>
+
+  <section class="wrap inside" id="inside" aria-labelledby="inside-title">
+    <div class="section-head">
+      <h2 id="inside-title">Inside the network, one step at a time</h2>
+      <p>Everything below is computed live for the image above. Change the image or move a slider and every number updates. We follow M1 because it is small enough to show every layer. M3 works the same way with more layers.</p>
+    </div>
+    <div class="steps" role="tablist" aria-label="Steps" id="step-tabs">
+      <button type="button" role="tab" data-step="0"><b>1</b> Pixels become numbers</button>
+      <button type="button" role="tab" data-step="1"><b>2</b> One filter, one calculation</button>
+      <button type="button" role="tab" data-step="2"><b>3</b> Layer by layer</button>
+      <button type="button" role="tab" data-step="3"><b>4</b> Scores become probabilities</button>
+      <button type="button" role="tab" data-step="4"><b>5</b> Where it looked</button>
+    </div>
+
+    <div class="step-panel" data-panel="0" role="tabpanel">
+      <div class="split">
+        <div>
+          <canvas id="px-canvas" class="hover-canvas" width="400" height="400" aria-label="Move over the image to read its pixels"></canvas>
+          <p class="note">Move the mouse over the image. The box marks the pixels shown on the right.</p>
+        </div>
+        <div>
+          <div class="seg" role="radiogroup" aria-label="Number scale" id="px-scale">
+            <button type="button" data-scale="255" aria-pressed="true">As stored (0 to 255)</button>
+            <button type="button" data-scale="1" aria-pressed="false">What M1 sees (0 to 1)</button>
+            <button type="button" data-scale="2" aria-pressed="false">What M3 sees (&minus;1 to 1)</button>
+          </div>
+          <div class="px-grid" id="px-grid"></div>
+          <p class="px-pos" id="px-pos"></p>
+          <div class="explain">
+            <p>A computer sees an image as a grid of numbers. Our images are 200 &times; 200 pixels in grayscale, so each one is <strong>40,000 numbers</strong>, one per pixel: 0 is black and 255 is white.</p>
+            <p>M1 divides every number by 255 so they run from 0 to 1. M3 was pretrained on colour photos of 224 &times; 224, so the image is enlarged to 224 &times; 224, copied into three identical colour channels and scaled to &minus;1 to 1.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-panel" data-panel="1" role="tabpanel" hidden>
+      <div class="conv-layout">
+        <div>
+          <canvas id="conv-canvas" class="hover-canvas" width="320" height="320" aria-label="Move over the image to place the filter"></canvas>
+          <p class="note">Move over the image to place the 3 &times; 3 filter.</p>
+          <button type="button" id="scan-btn" class="quiet">Slide the filter across the image</button>
+        </div>
+        <div class="conv-calc" id="conv-calc"></div>
+        <div>
+          <canvas id="fmap-canvas" width="320" height="320" aria-label="Feature map of the chosen filter"></canvas>
+          <p class="note" id="fmap-note"></p>
+        </div>
+      </div>
+      <h3 class="sub-h">The 32 filters of M1's first layer <span class="legend-inline"><i class="sw sw-pos"></i>positive weight <i class="sw sw-neg"></i>negative weight</span></h3>
+      <div class="filters" id="filters"></div>
+      <div class="explain wide">
+        <p>A filter is a small grid of <strong>9 learned numbers</strong> (its weights) plus one bias. It slides over every position of the image. At each position it multiplies the 3 &times; 3 pixels under it by its 9 weights, adds the products and the bias, and keeps the result only if it is positive. That last step is called <strong>ReLU</strong>: max(0, value).</p>
+        <p>Doing this at all 40,000 positions gives a new 200 &times; 200 image called a <strong>feature map</strong>. Dark blue places in the map are where the pattern this filter responds to appears. Nobody wrote these weights by hand: training adjusted them over many passes through the 1,260 training images until the predictions were right.</p>
+      </div>
+    </div>
+
+    <div class="step-panel" data-panel="2" role="tabpanel" hidden>
+      <div class="seg stage-model" role="radiogroup" aria-label="Model" id="stage-model">
+        <button type="button" data-model="m1" aria-pressed="true">M1, our small CNN</button>
+        <button type="button" data-model="m3" aria-pressed="false">M3, MobileNetV2</button>
+      </div>
+      <div class="pipeline" id="pipeline" role="tablist" aria-label="Layers"></div>
+      <div class="stage-view">
+        <div class="stage-maps" id="stage-maps"></div>
+        <div class="explain" id="stage-explain"></div>
+      </div>
+    </div>
+
+    <div class="step-panel" data-panel="3" role="tabpanel" hidden>
+      <div class="seg" role="radiogroup" aria-label="Model" id="soft-model">
+        <button type="button" data-model="m3" aria-pressed="true">M3</button>
+        <button type="button" data-model="m1" aria-pressed="false">M1</button>
+      </div>
+      <div class="split split-soft">
+        <div class="table-wrap"><table class="soft" id="soft-table"></table></div>
+        <div class="explain" id="soft-explain"></div>
+      </div>
+    </div>
+
+    <div class="step-panel" data-panel="4" role="tabpanel" hidden>
+      <div class="cam-pair">
+        <figure><canvas id="cam-m3" width="300" height="300"></canvas><figcaption id="cam-m3-cap"></figcaption></figure>
+        <figure><canvas id="cam-m1" width="300" height="300"></canvas><figcaption id="cam-m1-cap"></figcaption></figure>
+        <div class="explain">
+          <label class="range-label">Heat map strength <input type="range" id="cam-alpha" min="0" max="1" step="0.05" value="0.7"></label>
+          <p>This is <strong>Grad-CAM</strong>. It takes the feature maps of the model's last convolution layer and asks how much the score of the predicted class would rise if each map got stronger. That rate of change is the <strong>gradient</strong>.</p>
+          <p>Each map is weighted by its average gradient, the weighted maps are added, and only the positive part is kept. The result is enlarged to the image size. Yellow means that part of the image pushed the model towards its answer.</p>
+          <p>On most images M3 looks at the defect itself, while M1 often looks at the background texture. M1 also breaks down much sooner on darker or noisy images, as the robustness chart below shows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap results" id="results" aria-labelledby="results-title">
+    <div class="section-head">
+      <h2 id="results-title">How well it works</h2>
+      <p>Measured once on the 270 test images, after M1 and M3 had been chosen on the validation images. The test set was opened on 18 October 2026 at 04:38:53 UTC and never used for any decision.</p>
+    </div>
+    <div class="results-grid">
+      <div class="panel">
+        <h3>Test accuracy by model</h3>
+        <div id="acc-chart"></div>
+        <p class="note">All three models found every one of the 45 crazing (crack) images.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <h3 id="cm-title">Confusion matrix</h3>
+          <div class="seg" role="radiogroup" aria-label="Model" id="cm-model">
+            <button type="button" data-model="m3" aria-pressed="true">M3</button>
+            <button type="button" data-model="m1" aria-pressed="false">M1</button>
+          </div>
+        </div>
+        <div id="cm"></div>
+        <p class="note" id="cm-note"></p>
+        <div class="cm-picks" id="cm-picks"></div>
+      </div>
+      <div class="panel run-panel">
+        <h3>Check it yourself: run all 270 test images here</h3>
+        <p class="note">Runs both models on every test image inside this browser and compares the answers with our saved Keras results.</p>
+        <label class="check"><input type="checkbox" id="run-stress"> Apply the current stress-test changes to every image</label>
+        <button type="button" id="run-btn">Run the test set</button>
+        <div class="progress" aria-hidden="true"><div id="run-bar"></div></div>
+        <div id="run-out" role="status"></div>
+      </div>
+      <div class="panel robust-panel">
+        <div class="panel-head">
+          <h3 id="rob-title">Robustness</h3>
+          <select id="rob-kind" aria-label="Kind of change">
+            <option value="darker">Darker image</option>
+            <option value="noise">Random noise</option>
+            <option value="blur">Blur</option>
+            <option value="low_contrast">Lower contrast</option>
+          </select>
+        </div>
+        <div id="rob-chart"></div>
+        <p class="note">Accuracy on the 270 validation images as the change gets stronger. Click a point to apply that change to the image at the top.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap about" aria-labelledby="about-title">
+    <h2 id="about-title">About the data and the project</h2>
+    <div class="about-grid">
+      <div>
+        <h3>The dataset</h3>
+        <p>The NEU surface defect database from Northeastern University, China: <strong>1,800 grayscale images</strong> of hot-rolled steel strip, 200 &times; 200 pixels, <strong>300 per class</strong>. We used the Kaggle mirror and only the image class, not the detection boxes.</p>
+        <p>We split it once, before looking at the images: 1,260 for training, 270 for validation and 270 for testing, the same share of every class in each part (seed 42). The one duplicate pair we found was kept inside one part.</p>
+      </div>
+      <div>
+        <h3>The three models</h3>
+        <p><strong>M1</strong> is our own CNN: three convolution blocks, 109,958 learned numbers. <strong>M2</strong> adds batch normalisation and data augmentation. <strong>M3</strong> is MobileNetV2 pretrained on ImageNet with a new six-class output, fine-tuned on steel, 2,265,670 learned numbers.</p>
+        <p>The models were trained on Kaggle. Everything on this page runs on your own computer, with no server, using TensorFlow.js.</p>
+      </div>
+      <div>
+        <h3>The six defects</h3>
+        <ul class="defects" id="defect-list"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Group 29: Arnav Aggarwal, Armaan Malhotra, Tanishq Vashistha, Ishita Sharma and Abhilasha Das. UCS321 AI for Engineers, TIET Patiala.</p>
+  <p><a href="https://github.com/ArnavCodez/Ai-for-engineers-EST-project">github.com/ArnavCodez/Ai-for-engineers-EST-project</a></p>
+</footer>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<script type="text/plain" id="m1-weights">M1_WEIGHTS</script>
+<script type="text/plain" id="m3-weights">M3_WEIGHTS</script>
+<script type="application/json" id="meta">/*META*/</script>
+<script>/*TFJS*/</script>
+<script>/*APP*/</script>
+</body>
+</html>

@@ -430,3 +430,29 @@ Search tags with Ctrl+F: `[DECISION]` `[NUANCE]` `[BUG]` `[RESULT]` `[IDEA]` `[S
 **Why:** The report should point to the repository and the demo, and it should not list as future work something we have already built.
 **Result:** Still 21 pages, 2.24 MB.
 **Viva angle:** —
+
+---
+
+## 2026-11-17 22:30 | Phase 7.4 | Browser demo  (run by: Arnav)
+**Tags:** [RESULT] [BUG] [DECISION]
+**What we did:** Built `demo/index.html`, a single page that runs M1 and M3 in the browser with TensorFlow.js and needs no install, no server and no internet. It has the workspace (pick or upload an image, stress-test sliders, both models' probabilities, Grad-CAM overlay), a five-step walk through the network (pixels, one filter's calculation with real weights, every layer's feature maps, softmax with the real scores, Grad-CAM), and the results (accuracy, confusion matrix, robustness chart, and a button that reruns all 270 test images in the browser). `demo/build_demo.py` makes the page from `demo/src/`, the Keras models and the test images.
+**Why:** The Streamlit app needs Python, TensorFlow and the model files, which are not in git. A page that opens with a double-click works on any laptop in the viva and from a fresh clone, and it lets us show how the network calculates, not only what it answers.
+**How:** M1's weights are stored as they are (float32). M3 was flattened into a graph of convolutions, with each batch normalisation folded into the convolution before it, and its weights stored as 16-bit floats, which halves the page size. The build checks that this graph gives the same class as Keras on all 270 test images before writing the page. The test images are embedded as PNG files of exactly the pixels TensorFlow decoded. Grad-CAM uses the chain rule through the pooling and dense layers instead of automatic differentiation, which gives the same maps and is faster. When the page starts it runs both models on three test images and compares the probabilities with the Keras ones; if the graphics card is off it switches to the processor.
+**Result:** In Chrome on the laptop's Intel GPU the "run the test set" button gives 266/270 (98.52 %) for M3 and 254/270 (94.07 %) for M1, the same as notebook 06, with the same class as the saved Keras predictions on 270/270 images for both models. All 540 predictions take about 13 s; one image with both heat maps takes under a second after the first run. The page is 16.4 MB.
+**Nuances / gotchas:**
+  - [BUG] The first version embedded the original JPEG files and got only 259/270 of M1's answers matching. The NEU files are colour JPEGs. TensorFlow decodes them straight to one gray channel with its fast decoder, while the browser decodes to RGB with a different decoder, so pixels came out about half a gray level brighter on average. M1 is so sensitive to brightness that this flipped 11 borderline images. Fix: embed lossless PNGs of the pixels TensorFlow produced (3 MB more).
+  - The first start compiles GPU programs and can take 10 to 20 s. Later starts are faster because the browser caches them.
+  - The probabilities of M3 differ from Keras by up to 0.04 on uncertain images because of the 16-bit weights. No predicted class changes.
+**Alternatives considered:** Keeping the Streamlit app as the only demo (needs Python and the models); converting the models with the `tensorflowjs` converter (heavy install, and Keras 3 support was uncertain); TensorFlow Lite in the browser (experimental runtime).
+**Viva angle:** Q: "How do we know the browser gives the same answers as your notebooks?" A: Press "Run the test set": it reproduces 98.52 % and 94.07 % and compares every answer with the saved Keras predictions.
+
+---
+
+## 2026-11-17 23:30 | Phase 7.4 | README rewrite  (run by: Arnav)
+**Tags:** [FIX]
+**What we did:** Rewrote `README.md` around the browser demo: key numbers at the top, how to open `demo/index.html` on Windows, macOS and Linux, what each part of the page shows (with screenshots in `docs/demo/`), a five-minute demo script, the dataset and our split, the results of all three models, how the page is built, and the per-OS setup for the notebooks and the Streamlit app.
+**Why:** The old README only explained the Streamlit app, which does not run from a fresh clone because the models and images are not in git. Anyone who opens the repository should find the demo first.
+**Result:** All links and images in the README point to files in the repository.
+**Viva angle:** Q: "Can we try it ourselves?" A: Clone the repository and double-click `demo/index.html`; nothing else is needed.
+
+---
