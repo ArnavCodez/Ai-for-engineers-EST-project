@@ -2,7 +2,7 @@
 
 A convolutional neural network (CNN) that looks at a grayscale photo of hot-rolled steel strip and names which of six surface defects it shows. It comes with a demo that runs in the browser and shows, step by step, how the network reaches its answer.
 
-UCS321 AI for Engineers, EST mini project, statement #3 (Tata Steel scenario). TIET Patiala, B.E. ECE, Semester III, group 29.
+UCS321 AI for Engineers, EST mini project, statement #3 (Tata Steel scenario). TIET Patiala, B.E. ENC, Semester III, group 29.
 
 ![The demo: pick a test image, see what both models answer and where the final model looked](docs/demo/workspace.jpg)
 
